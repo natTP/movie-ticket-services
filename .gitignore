@@ -1,0 +1,21 @@
+# mongo
+*/data
+# dependencies
+*/node_modules
+
+# testing
+*/coverage
+
+# production
+.next
+
+# misc
+.DS_Store
+.env.develop
+package-lock.json
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/.idea
+
+.env

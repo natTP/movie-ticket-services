@@ -1,0 +1,17 @@
+import express from 'express'
+import configExpress from './configs/express'
+// import routes from './app/routes'
+import { URL_PREFIX, APP_ENV } from './configs'
+// import expressErrorResponse from './app/constants/errors/defaultErrorResponse'
+
+const app = express()
+
+configExpress(app)
+
+app.get('/healthz', (req, res) => res.status(200).json({ status: 'ok' }))
+
+//app.use(`${URL_PREFIX}`, routes)
+
+// app.use(expressErrorResponse({ enableLog: APP_ENV !== 'test' }))
+
+export default app
