@@ -6,7 +6,7 @@ const router = express.Router()
 
 router
   .post('/users', validator.createUser, userController.createUser)
-  .get('/users', userController.getAllUsers)
+  .get('/users', userController.getUserList)
   .get('/users/:ID', validator.getUserByID, userController.getUserByID)
   .get(
     '/users/email/:email',

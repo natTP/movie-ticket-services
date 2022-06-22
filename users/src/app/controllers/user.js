@@ -12,7 +12,7 @@ const createUser = async (req, res) => {
   }
 }
 
-const getAllUsers = async (req, res) => {
+const getUserList = async (req, res) => {
   const result = await userModel.find({})
   if (!result) {
     throw NOT_FOUND_DATA
@@ -40,7 +40,7 @@ const getUserByID = async (req, res) => {
 
 export default {
   createUser,
-  getAllUsers,
+  getUserList,
   getUserByEmail,
   getUserByID,
 }
