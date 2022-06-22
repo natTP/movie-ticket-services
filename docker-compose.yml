@@ -1,11 +1,12 @@
 version: '3'
 services:
   user-service:
+    container_name: user-service
     build: ./users
     ports:
       - '3000:3000'
     volumes:
-      - ./users:/usr/users/src/app
+      - ./users:/usr/src/app
     env_file:
       - ./users/.env
     command: ['/bin/sh', '-c', 'yarn install --production=false && yarn dev']
@@ -15,6 +16,7 @@ services:
       - mongo
 
   mongo:
+    container_name: mongo
     image: mongo:4.4.5
     ports:
       - '27017:27017'

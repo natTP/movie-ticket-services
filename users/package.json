@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "babel src/ -d dist/",
-    "start": "nodemon -L dist/server.js",
+    "start": "nodemon dist/server.js",
     "dev": "OVERRIDE_DEFAULT_LOGGER=false && nodemon src/server.js --exec babel-node -e js"
   },
   "dependencies": {
