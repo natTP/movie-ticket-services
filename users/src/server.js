@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import app from './app'
 
-import { APP_ENV, NODE_PORT, databaseConfig } from './configs'
+import { APP_ENV, NODE_PORT, databaseConfig } from './config'
 
 const database = `${databaseConfig.endpoint}`
 const option = {

@@ -1,7 +1,7 @@
 import express from 'express'
-import configExpress from './configs/express'
+import configExpress from './config/express'
 // import routes from './app/routes'
-import { URL_PREFIX, APP_ENV } from './configs'
+import { URL_PREFIX, APP_ENV } from './config'
 // import expressErrorResponse from './app/constants/errors/defaultErrorResponse'
 
 const app = express()
