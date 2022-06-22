@@ -1,6 +1,6 @@
 import { body } from 'express-validator'
 import validate from '../constants/validateMessages'
-import userModel from '../models/user'
+import userModel from '../models/schemas/user'
 
 const validateFieldsList = [
   body('email')
@@ -13,8 +13,7 @@ const validateFieldsList = [
       if (isExist) {
         return Promise.reject('Email already in use.')
       }
-    })
-    .withMessage('Email already in use.'),
+    }),
   body('password')
     .notEmpty()
     .withMessage(validate.notEmpty)
