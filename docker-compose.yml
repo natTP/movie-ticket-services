@@ -15,6 +15,21 @@ services:
     depends_on:
       - mongo
 
+  showtime-service:
+    container_name: showtime-service
+    build: ./showtimes
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./showtimes:/usr/src/app
+    env_file:
+      - ./showtimes/.env
+    command: ['/bin/sh', '-c', 'yarn install --production=false && yarn dev']
+    networks:
+      - microservices
+    depends_on:
+      - mongo
+
   mongo:
     container_name: mongo
     image: mongo:4.4.5
