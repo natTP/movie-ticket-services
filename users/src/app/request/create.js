@@ -1,6 +1,6 @@
 import { body } from 'express-validator'
 import validate from '../constants/validateMessages'
-import userModel from '../models/schemas/user'
+import userModel from '../models/user'
 
 const validateFieldsList = [
   body('email')

@@ -13,4 +13,6 @@ const findOneAndUpdate = (filter, data) =>
 
 const deleteOne = (query) => Movie.deleteOne(query).exec()
 
-export default { create, find, findOne, findOneAndUpdate, deleteOne }
+const exists = (query) => Movie.exists(query)
+
+export default { create, find, findOne, findOneAndUpdate, deleteOne, exists }
