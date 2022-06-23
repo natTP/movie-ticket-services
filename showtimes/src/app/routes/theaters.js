@@ -1,9 +1,12 @@
-// import express from 'express'
-// import userController from '../controllers/user'
-// import validator from '../request'
+import express from 'express'
+import theaterController from '../controllers/theater'
+import validator from '../request'
 
-// const router = express.Router()
+const router = express.Router()
 
-// router.post('/').get('/').get('/:ID')
+router
+  .post('/', validator.createTheater, theaterController.createTheater)
+  .get('/', theaterController.getTheaterList)
+  .get('/:ID', validator.getTheaterByID, theaterController.getTheaterByID)
 
-// export default router
+export default router

@@ -11,8 +11,8 @@ configExpress(app)
 
 app.get('/healthz', (req, res) => res.status(200).json({ status: 'ok' }))
 app.use(`${URL_PREFIX}/movies`, movieRoutes)
-// app.use(`${URL_PREFIX}/showtimes`, showtimeRoutes)
-// app.use(`${URL_PREFIX}/theaters`, theaterRoutes)
+app.use(`${URL_PREFIX}/showtimes`, showtimeRoutes)
+app.use(`${URL_PREFIX}/theaters`, theaterRoutes)
 
 app.use(expressErrorResponse({ enableLog: APP_ENV !== 'test' }))
 

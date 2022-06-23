@@ -1,6 +1,6 @@
 exports.notEmpty = 'is required.'
 exports.isDate = 'must be date format (YYYY-MM-DD).'
-exports.isDateISOString = 'must be date format (YYYY-MM-DDThh:mm:ssZ).'
+exports.isDateTime = 'must be date format (YYYY-MM-DD hh:mm:ss).'
 exports.isBoolean = 'must be only boolean.'
 exports.isInt = 'must be only numeric.'
 exports.isArray = 'must be array.'

@@ -1,9 +1,17 @@
-// import express from 'express'
-// import userController from '../controllers/user'
-// import validator from '../request'
+import express from 'express'
+import showtimeController from '../controllers/showtime'
+import validator from '../request'
 
-// const router = express.Router()
+const router = express.Router()
 
-// router.post('/').get('/').get('/:movieID').get('/:ID')
+router
+  .post('/', validator.createShowtime, showtimeController.createShowtime)
+  .get('/', showtimeController.getShowtimeList)
+  .get(
+    '/movie/:ID',
+    validator.getShowtimeByMovieID,
+    showtimeController.getShowtimeByMovieID
+  )
+  .get('/:ID', validator.getShowtimeByID, showtimeController.getShowtimeByID)
 
-// export default router
+export default router

@@ -1,11 +1,9 @@
 import mongoose from 'mongoose'
-import { movieSchema } from './movie'
-import { theaterSchema } from './theater'
 
 const showtimeSchema = new mongoose.Schema(
   {
-    movie: { type: movieSchema, required: true },
-    theater: { type: theaterSchema, required: true },
+    movie: { type: String, required: true },
+    theater: { type: String, required: true },
     reservedSeats: [String],
     dateTime: { type: Date, required: true },
     language: { type: String, required: false },

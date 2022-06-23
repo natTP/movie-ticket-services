@@ -27,7 +27,7 @@ const theaterSchema = new mongoose.Schema(
   }
 )
 
-const theaterModel = mongoose.model('showtime', theaterSchema)
+const theaterModel = mongoose.model('theater', theaterSchema)
 
 export { theaterSchema }
 export default theaterModel
