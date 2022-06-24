@@ -3,7 +3,7 @@ import Movie from './schemas/movie'
 const create = (data, options) => Movie.create(data, options)
 
 const find = (query, fields = {}, options = {}) =>
-  Movie.find(query, fields, options).lean().exec()
+  Movie.find(query, fields, options).sort({ releaseDate: 'desc' }).lean().exec()
 
 const findOne = (query, fields = {}, options = {}) =>
   Movie.findOne(query, fields, options).lean().exec()
