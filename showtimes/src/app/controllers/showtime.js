@@ -24,8 +24,19 @@ const getShowtimeList = async (req, res) => {
 
 const getShowtimeByMovieID = async (req, res) => {
   const { ID } = req.params
+  const { date } = req.query
   try {
-    const result = await showtimeModel.find({ movie: ID })
+    const dateObject = new Date(date)
+    const nextDateObject = new Date(date)
+    nextDateObject.setDate(nextDateObject.getDate() + 1)
+
+    const result = await showtimeModel.find({
+      movie: ID,
+      dateTime: {
+        $gte: dateObject,
+        $lt: nextDateObject,
+      },
+    })
     res.status(200).json(result)
   } catch (error) {
     throw NOT_FOUND_DATA
