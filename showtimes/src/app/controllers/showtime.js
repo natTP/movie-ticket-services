@@ -5,7 +5,6 @@ import showtimeModel from '../models/showtime'
 const createShowtime = async (req, res) => {
   const matched = matchedData(req)
   try {
-    console.log(matched)
     const result = await showtimeModel.create({ ...matched })
     res.status(201).json(result)
   } catch (error) {
