@@ -30,6 +30,23 @@ services:
     depends_on:
       - mongo
 
+  reservation-service:
+    container_name: reservation-service
+    build: ./reservations
+    ports:
+      - '3002:3002'
+    volumes:
+      - ./reservations:/usr/src/app
+    env_file:
+      - ./reservations/.env
+    command: ['/bin/sh', '-c', 'yarn install --production=false && yarn dev']
+    networks:
+      - microservices
+    depends_on:
+      - mongo
+      - user-service
+      - showtime-service
+
   mongo:
     container_name: mongo
     image: mongo:4.4.5
