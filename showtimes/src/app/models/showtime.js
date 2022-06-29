@@ -9,7 +9,7 @@ const findOne = (query, fields = {}, options = {}) =>
   Showtime.findOne(query, fields, options).lean().exec()
 
 const findOneAndUpdate = (filter, data) =>
-  Showtime.findOneAndUpdate(filter, data, { upsert: true, new: true }).exec()
+  Showtime.findOneAndUpdate(filter, data, { upsert: false, new: true }).exec()
 
 const deleteOne = (query) => Showtime.deleteOne(query).exec()
 

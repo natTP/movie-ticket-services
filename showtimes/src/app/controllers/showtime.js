@@ -1,5 +1,5 @@
 import { matchedData } from 'express-validator'
-import { ERROR_CREATION, NOT_FOUND_DATA } from '../constants/errors/unsuccess'
+import { ERROR_UPDATED, NOT_FOUND_DATA } from '../constants/errors/unsuccess'
 import showtimeModel from '../models/showtime'
 
 const createShowtime = async (req, res) => {
@@ -52,9 +52,24 @@ const getShowtimeByID = async (req, res) => {
   }
 }
 
+const updateShowtimeReservedSeats = async (req, res) => {
+  const { ID } = req.params
+  const { reservedSeats } = req.body
+  try {
+    const result = await showtimeModel.findOneAndUpdate(
+      { _id: ID },
+      { reservedSeats }
+    )
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_UPDATED
+  }
+}
+
 export default {
   createShowtime,
   getShowtimeList,
   getShowtimeByMovieID,
   getShowtimeByID,
+  updateShowtimeReservedSeats,
 }

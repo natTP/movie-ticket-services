@@ -3,6 +3,7 @@ import createShowtime from './createShowtime'
 import createTheater from './createTheater'
 import getByID from './getByID'
 import getByIDAndDate from './getByIDAndDate'
+import updateSeats from './updateSeats'
 import executeValidator from './request'
 
 export default {
@@ -11,6 +12,7 @@ export default {
   createShowtime: executeValidator(createShowtime),
   getShowtimeByMovieID: executeValidator(getByIDAndDate),
   getShowtimeByID: executeValidator(getByID),
+  updateShowtimeReservedSeats: executeValidator(updateSeats),
   createTheater: executeValidator(createTheater),
   getTheaterByID: executeValidator(getByID),
 }

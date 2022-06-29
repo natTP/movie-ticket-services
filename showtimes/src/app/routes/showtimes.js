@@ -13,5 +13,10 @@ router
     showtimeController.getShowtimeByMovieID
   )
   .get('/:ID', validator.getShowtimeByID, showtimeController.getShowtimeByID)
+  .patch(
+    '/:ID',
+    validator.updateShowtimeReservedSeats,
+    showtimeController.updateShowtimeReservedSeats
+  )
 
 export default router
