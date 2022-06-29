@@ -22,7 +22,7 @@ router
     reservationController.getReservationByUser
   )
   .delete(
-    '/reservation/:ID',
+    '/reservations/:ID',
     validator.deleteReservationByID,
     reservationController.deleteReservationByID
   )
