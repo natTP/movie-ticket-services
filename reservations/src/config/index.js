@@ -18,4 +18,6 @@ export const {
   URL_PREFIX,
   JWT_PRIVATE_KEY,
   JWT_PUBLIC_KEY,
+  URL_USER_SERVICE,
+  URL_SHOWTIME_SERVICE,
 } = process.env

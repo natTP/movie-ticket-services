@@ -1,5 +1,9 @@
 import { matchedData } from 'express-validator'
-import { ERROR_CREATION, NOT_FOUND_DATA } from '../constants/errors/unsuccess'
+import {
+  ERROR_CREATION,
+  ERROR_DELETED,
+  NOT_FOUND_DATA,
+} from '../constants/errors/unsuccess'
 import reservationModel from '../models/reservation'
 
 const createReservation = async (req, res) => {
@@ -41,9 +45,20 @@ const getReservationByID = async (req, res) => {
   }
 }
 
+const deleteReservationByID = async (req, res) => {
+  const { ID } = req.params
+  try {
+    const result = await reservationModel.deleteOne({ _id: ID })
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_DELETED
+  }
+}
+
 export default {
   createReservation,
   getReservationList,
   getReservationByUser,
   getReservationByID,
+  deleteReservationByID,
 }

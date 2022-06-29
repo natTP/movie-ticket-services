@@ -1,12 +1,30 @@
 import express from 'express'
 import reservationController from './controllers/reservation'
+import validator from './request'
 
 const router = express.Router()
 
 router
-  .post('/reservations', reservationController.createReservation)
+  .post(
+    '/reservations',
+    validator.createReservation,
+    reservationController.createReservation
+  )
   .get('/reservations', reservationController.getReservationList)
-  .get('/reservations/:ID', reservationController.getReservationByID)
-  .get('/reservations/user/:ID', reservationController.getReservationByUser)
+  .get(
+    '/reservations/:ID',
+    validator.getReservationByID,
+    reservationController.getReservationByID
+  )
+  .get(
+    '/reservations/user/:ID',
+    validator.getReservationByUser,
+    reservationController.getReservationByUser
+  )
+  .delete(
+    '/reservation/:ID',
+    validator.deleteReservationByID,
+    reservationController.deleteReservationByID
+  )
 
 export default router
