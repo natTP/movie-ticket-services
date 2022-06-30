@@ -45,6 +45,20 @@ const getReservationByID = async (req, res) => {
   }
 }
 
+const updateReservationByID = async (req, res) => {
+  const { ID } = req.params
+  const matched = matchedData(req, { includeOptionals: true })
+  try {
+    const result = await reservationModel.findOneAndUpdate(
+      { _id: ID },
+      { ...matched }
+    )
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_UPDATED
+  }
+}
+
 const deleteReservationByID = async (req, res) => {
   const { ID } = req.params
   try {
@@ -60,5 +74,6 @@ export default {
   getReservationList,
   getReservationByUser,
   getReservationByID,
+  updateReservationByID,
   deleteReservationByID,
 }

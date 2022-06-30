@@ -21,6 +21,11 @@ router
     validator.getReservationByUser,
     reservationController.getReservationByUser
   )
+  .put(
+    '/reservations/:ID',
+    validator.updateReservationByID,
+    reservationController.updateReservationByID
+  )
   .delete(
     '/reservations/:ID',
     validator.deleteReservationByID,
