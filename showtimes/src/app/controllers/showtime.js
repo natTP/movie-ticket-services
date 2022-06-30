@@ -66,10 +66,21 @@ const updateShowtimeReservedSeats = async (req, res) => {
   }
 }
 
+const deleteShowtimeByID = async (req, res) => {
+  const { ID } = req.params
+  try {
+    const result = await showtimeModel.deleteOne({ _id: ID })
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_DELETED
+  }
+}
+
 export default {
   createShowtime,
   getShowtimeList,
   getShowtimeByMovieID,
   getShowtimeByID,
   updateShowtimeReservedSeats,
+  deleteShowtimeByID,
 }

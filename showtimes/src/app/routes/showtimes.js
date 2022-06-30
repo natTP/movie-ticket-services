@@ -18,5 +18,10 @@ router
     validator.updateShowtimeReservedSeats,
     showtimeController.updateShowtimeReservedSeats
   )
+  .delete(
+    '/:ID',
+    validator.deleteShowtimeByID,
+    showtimeController.deleteShowtimeByID
+  )
 
 export default router

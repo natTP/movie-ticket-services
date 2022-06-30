@@ -8,5 +8,7 @@ router
   .post('/', validator.createMovie, movieController.createMovie)
   .get('/', movieController.getMovieList)
   .get('/:ID', validator.getMovieByID, movieController.getMovieByID)
+  .put('/:ID', validator.updateMovieByID, movieController.updateMovieByID)
+  .delete('/:ID', validator.deleteMovieByID, movieController.deleteMovieByID)
 
 export default router

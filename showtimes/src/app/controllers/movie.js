@@ -31,8 +31,34 @@ const getMovieByID = async (req, res) => {
   }
 }
 
+const updateMovieByID = async (req, res) => {
+  const { ID } = req.params
+  const matched = matchedData(req, { includeOptionals: true })
+  try {
+    const result = await movieModel.findOneAndUpdate(
+      { _id: ID },
+      { ...matched }
+    )
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_UPDATED
+  }
+}
+
+const deleteMovieByID = async (req, res) => {
+  const { ID } = req.params
+  try {
+    const result = await movieModel.deleteOne({ _id: ID })
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_DELETED
+  }
+}
+
 export default {
   createMovie,
   getMovieList,
   getMovieByID,
+  updateMovieByID,
+  deleteMovieByID,
 }

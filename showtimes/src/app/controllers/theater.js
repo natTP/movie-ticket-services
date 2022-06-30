@@ -31,8 +31,34 @@ const getTheaterByID = async (req, res) => {
   }
 }
 
+const updateTheaterByID = async (req, res) => {
+  const { ID } = req.params
+  const matched = matchedData(req, { includeOptionals: true })
+  try {
+    const result = await theaterModel.findOneAndUpdate(
+      { _id: ID },
+      { ...matched }
+    )
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_UPDATED
+  }
+}
+
+const deleteTheaterByID = async (req, res) => {
+  const { ID } = req.params
+  try {
+    const result = await theaterModel.deleteOne({ _id: ID })
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_DELETED
+  }
+}
+
 export default {
   createTheater,
   getTheaterList,
   getTheaterByID,
+  updateTheaterByID,
+  deleteTheaterByID,
 }
