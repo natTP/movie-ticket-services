@@ -1,5 +1,10 @@
 import { matchedData } from 'express-validator'
-import { ERROR_CREATION, NOT_FOUND_DATA } from '../constants/errors/unsuccess'
+import {
+  ERROR_CREATION,
+  ERROR_UPDATED,
+  ERROR_DELETED,
+  NOT_FOUND_DATA,
+} from '../constants/errors/unsuccess'
 import userModel from '../models/user'
 
 const createUser = async (req, res) => {
@@ -41,9 +46,32 @@ const getUserByID = async (req, res) => {
   }
 }
 
+const updateUserByID = async (req, res) => {
+  const { ID } = req.params
+  const matched = matchedData(req, { includeOptionals: true })
+  try {
+    const result = await userModel.findOneAndUpdate({ _id: ID }, { ...matched })
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_UPDATED
+  }
+}
+
+const deleteUserByID = async (req, res) => {
+  const { ID } = req.params
+  try {
+    const result = await userModel.deleteOne({ _id: ID })
+    res.status(200).json(result)
+  } catch (error) {
+    throw ERROR_DELETED
+  }
+}
+
 export default {
   createUser,
   getUserList,
   getUserByEmail,
   getUserByID,
+  updateUserByID,
+  deleteUserByID,
 }

@@ -13,5 +13,7 @@ router
     validator.getUserByEmail,
     userController.getUserByEmail
   )
+  .put('/users/:ID', validator.updateUserByID, userController.updateUserByID)
+  .delete('/users/:ID', validator.deleteUserByID, userController.deleteUserByID)
 
 export default router
