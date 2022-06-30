@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const reservationSchema = new mongoose.Schema(
   {
-    user: { type: String, required: true },
+    user: { type: String, required: true, index: true },
     showtime: { type: String, required: true },
     seats: [String],
     price: { type: Number, required: false },

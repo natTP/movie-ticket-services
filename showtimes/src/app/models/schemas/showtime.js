@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const showtimeSchema = new mongoose.Schema(
   {
-    movie: { type: String, required: true },
+    movie: { type: String, required: true, index: true },
     theater: { type: String, required: true },
     reservedSeats: [String],
     dateTime: { type: Date, required: true },
